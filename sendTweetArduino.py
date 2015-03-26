@@ -1,13 +1,11 @@
 import tweepy
 from datetime import datetime
-#import serial
+import serial
 import time
+from random import randint
 
 localtime = time.asctime( time.localtime(time.time()) )
 
-#ser = serial.Serial('/dev/tty.usbmodem1421')
-
-#serStr = ser.read();
 
 # Consumer keys and access tokens, used for OAuth
 consumer_key = 'FADWhr61GVD5WB9tFCbzEqvHv'
@@ -22,11 +20,15 @@ auth.set_access_token(access_token, access_token_secret)
 # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
-def tweetNow():
-	tweet_text = raw_input("Enter a tweet:")
-    	api.update_status(status=tweet_text + 
-	" Time:\n " + str(localtime))
-
+def checkSerial():
+	if (serVal):
+    		api.update_status(status= "Detected someone close by at " + 
+	    	time.strftime("%H:%M:%S"))
+	    	time.sleep(5)
+	
 
 while True:
-	tweetNow()
+	ser = serial.Serial('/dev/tty.usbmodem1411')
+	serVal = ser.read()
+	val = randint(0,9999)
+	checkSerial()
