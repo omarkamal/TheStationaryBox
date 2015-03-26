@@ -22,7 +22,7 @@ api = tweepy.API(auth)
 
 def checkSerial():
 	if (serVal):
-    		api.update_status(status= "Detected someone close by at " + 
+    		api.update_status(status= "Detected someone at " + 
 	    	time.strftime("%H:%M:%S"))
 	    	time.sleep(5)
 	
